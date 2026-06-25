@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/LondheShubham153/tws-e-commerce-app.git'
+                    url: 'https://github.com/ShivamAtre01/1st-e-commerce-app'
             }
         }
 
