@@ -4,6 +4,11 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    environment:
+      DB_HOST: mysql
+      DB_USER: shivam
+      DB_PASSWORD: user123
+      DB_NAME: appdb
     depends_on:
       - mysql
   mysql:
