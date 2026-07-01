@@ -4,8 +4,6 @@ pipeline {
     environment {
         IMAGE_NAME = "top017/app"
         IMAGE_TAG = "latest"
-        DOCKER_USER = "top017"
-        DOCKER_PASS = "dckr_pat_--QYqzWNlHon_2L9_KytIU5C0MI"
     }
 
     stages {
