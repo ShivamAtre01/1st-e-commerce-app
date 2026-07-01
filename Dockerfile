@@ -23,6 +23,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 COPY --from=builder /app .
+COPY --from=builder /home/node/app/.next ./.next
 
 ENV NODE_ENV=production
 
