@@ -3,12 +3,13 @@ pipeline {
 
     environment {
         IMAGE_NAME = "top017/app"
-        IMAGE_TAG = "latest"
+        IMAGE_TAG = "${BUILD_NUMBER}"
     }
-    
+
     stages {
-        stage('Claear workspace'){
-            steps{
+
+        stage('Clean Workspace') {
+            steps {
                 cleanWs()
             }
         }
@@ -23,6 +24,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
             }
         }
 
@@ -36,6 +38,8 @@ pipeline {
 
                     sh '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+
+                    docker push top017/app:${BUILD_NUMBER}
                     docker push top017/app:latest
                     '''
                 }
@@ -44,6 +48,7 @@ pipeline {
 
         stage('Deploy Using Docker Compose') {
             steps {
+                sh 'docker compose down'
                 sh 'docker compose pull'
                 sh 'docker compose up -d'
             }
