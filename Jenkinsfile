@@ -5,8 +5,13 @@ pipeline {
         IMAGE_NAME = "top017/app"
         IMAGE_TAG = "latest"
     }
-
+    
     stages {
+        stage('Claear workspace'){
+            steps{
+                cleanWs()
+            }
+        }
 
         stage('Clone Repository') {
             steps {
