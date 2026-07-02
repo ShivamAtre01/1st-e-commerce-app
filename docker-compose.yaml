@@ -1,27 +1,15 @@
 services:
   app:
     image: top017/app:latest
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    environment:
-      DB_HOST: mysql
-      DB_USER: shivam
-      DB_PASSWORD: user123
-      DB_NAME: appdb
+    env_file:
+      - .env
     depends_on:
-      - mysql
-  mysql:
-    image: mysql:8
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: appdb
-      MYSQL_USER: shivam
-      MYSQL_PASSWORD: user123
+      - mongo
+
+  mongo:
+    image: mongo:7
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mongo-data:/data/db
 
 volumes:
-  mysql-data:
-    
+  mongo-data:
