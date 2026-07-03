@@ -23,7 +23,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build --cpus='1' --memory='1200m' -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                sh "docker build --cpu-quota=100000 --cpu-period=100000 --memory='1200m' -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
             }
         }
