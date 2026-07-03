@@ -11,6 +11,8 @@ COPY . .
 
 RUN npm run build
 
+RUN npx update-browserslist-db@latest
+
 # Stage 2 - Run
 FROM node:20-alpine
 
