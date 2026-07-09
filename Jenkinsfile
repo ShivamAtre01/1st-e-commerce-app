@@ -35,11 +35,11 @@ pipeline {
         stage('Trivy Scan') {
             steps {
                 sh '''
-                    trivy image \
-                    --severity HIGH,CRITICAL \
-                    --exit-code 1 \
-                    top017/app:${BUILD_NUMBER}
-                    '''
+                trivy image \
+                --severity HIGH,CRITICAL \
+                --exit-code 1 \
+                ${IMAGE_NAME}:${IMAGE_TAG}
+                '''
             }
         }
 
