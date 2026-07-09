@@ -38,7 +38,7 @@ pipeline {
                     trivy image \
                     --severity HIGH,CRITICAL \
                     --exit-code 1 \
-                    myapp:${BUILD_NUMBER}
+                    top017/app:${BUILD_NUMBER}
                     '''
             }
         }
