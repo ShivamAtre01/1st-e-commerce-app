@@ -20,11 +20,26 @@ pipeline {
                     url: 'https://github.com/ShivamAtre01/1st-e-commerce-app.git'
             }
         }
+        stage('Trivy Filesystem Scan') {
+            steps {
+                sh 'trivy fs .'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
                 sh "docker build --cpu-quota=100000 --cpu-period=100000 --memory='1200m' -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
+            }
+        }
+        stage('Trivy Scan') {
+            steps {
+                sh '''
+                    trivy image \
+                    --severity HIGH,CRITICAL \
+                    --exit-code 1 \
+                    myapp:${BUILD_NUMBER}
+                    '''
             }
         }
 
