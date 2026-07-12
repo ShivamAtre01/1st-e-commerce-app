@@ -12,7 +12,7 @@ GitHub, Jenkins, Docker, Trivy, Docker Hub, and AWS EC2.
 
 Replace with your architecture image:
 
-![Architecture](screenshots/architecture.png)
+![Architecture](src/CI-CD Pipeline.png)
 
 🛠️ Tech Stack
 
