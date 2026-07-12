@@ -10,9 +10,37 @@ GitHub, Jenkins, Docker, Trivy, Docker Hub, and AWS EC2.
 
 🏗️ Architecture
 
-Replace with your architecture image:
-
 ![Architecture](src/ci-cd-pipeline.png)
+
+---
+
+⚙️ Jenkins Pipeline
+
+![Jenkins Pipeline](src/jenkins-pipeline.png)
+
+---
+
+🐳 Docker Hub Repository
+
+![Docker Hub](src/dockerhub.png)
+
+---
+
+☁️ AWS EC2 (Running Containers)
+
+![AWS EC2](src/docker-ps.png)
+
+---
+
+🌐 Live Application
+
+![Live Application](src/live-application.png)
+
+---
+
+📧 Email Notification
+
+![Email Notification](src/email-notification.png)
 
 🛠️ Tech Stack
 
